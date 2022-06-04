@@ -1,0 +1,217 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="resources/css/style.css"/>
+        <link rel="stylesheet" href="resources/css/animation.css"/>
+        <title>CyberEmlak - Giriş Yap</title>
+        <style>
+            .container {
+                height: 90vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: #ccc;
+            }
+            .form-group .form {
+                padding: 50px 40px;
+                box-shadow: 3px 3px 10px 1px rgba(0, 0, 0, 0.3);
+                background: #fff;
+                border-radius: 0px 0px 5px 5px;
+            }
+            .form-group > div a:hover {
+                background: #999;
+                padding: 1px 6px;
+                border-radius: 5px;
+            }
+
+            .form-group .btn {
+                display: block;
+                width: 100%;
+                padding: 10px;
+                margin-top: 10px;
+                border: none;
+                background: inherit;
+                font-family: inherit;
+                font-size: 1.1rem;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+            .form-group .btn:nth-child(1){
+                background: #cb0000;
+                color: #fff;
+            }
+            .form-group .input-email,
+            .form-group .input-pass {
+                display: inline-block;
+                padding: 10px 20px;
+                margin: 6px 3px;
+                margin-bottom: 20px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                font-family: inherit;
+                font-size: .9rem;
+            }
+            footer {
+                width: 100%;
+                height: 400px;
+                background: #223445;
+                color: #fff;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                line-height: 1.6;
+            }
+            footer > div:nth-child(1) {
+                display: flex; 
+                justify-content: center;
+                padding: 30px 50px 60px;
+                width: 100%;
+            }
+            footer > div:nth-child(1) > div {
+                padding: 0 50px;
+            }
+            footer > div:nth-child(1) > div p {
+                font-weight: bolder;
+                font-size: 1.2rem;
+                margin-bottom: 10px;
+            }
+
+            footer > div:nth-child(1) > div .footer-btn {
+                display: block;
+                padding: 7px 60px;
+                background: #64707c;
+                margin: 30px 0;
+                border-radius: 5px;
+                font-size: .8rem;
+                font-weight: bolder;
+                color: #f8f8f8;
+            }
+            footer > div:nth-child(1) > div .footer-btn:focus {
+                outline: none;
+            }
+        </style>
+    </h:head>
+    <h:body>
+        
+        <nav class="navbar">
+            <ul class="left">
+                <li class="logo" style="align-self: center; margin-bottom: 3px; margin-right: 10px;"><h:link outcome="index.xhtml" class="bolder" style="border-bottom: none; font-size: 1.4rem;"><i class="fa-solid fa-house-chimney-window" style="color: #cc0000;"></i> CyberEmlak</h:link></li>
+                <li><h:link outcome="about.xhtml">Hakkımızda</h:link></li>
+                <li><h:link outcome="offices.xhtml">Ofislerimiz</h:link></li>
+                <li><h:link outcome="consultants.xhtml">Danışmanlarımız</h:link></li>
+                <li><h:link outcome="news.xhtml">Haberler</h:link></li>
+                <li><h:link outcome="contact.xhtml">İletişim</h:link></li>
+            </ul>
+            <ul class="right">
+                <li class="login-group">
+                    <div>
+                        <div><p class="bolder" style="color: #fff; font-size:.85rem; margin-bottom: -6px; margin-left: 8px;">Giriş Yap</p><p><span class="pale-text" style="font-size: .85rem">veya</span> <span class="red-text bolder" style="font-size: .85rem">üye ol</span></p></div>
+                        <div><i style="display: block;" class="fa-solid fa-circle-user fa-2x"></i></div>
+                    </div>
+                    <ul>
+                        <div>
+                            <div>
+                                <li class="bg-red"><h:outputLink value="login.xhtml" class="bolder">Üye Girişi Yap</h:outputLink></li>
+                            </div>
+                            <div>
+                                <li><h:outputLink value="register.xhtml" class="bolder">Cyberians'a Üye Ol</h:outputLink></li>
+                            </div>
+                        </div>
+                    </ul>
+                </li>
+                <li class="advertise bolder"><h:outputLink value="login.xhtml">Ücretsiz İlan Ver</h:outputLink></li>
+            </ul>
+        </nav>
+        
+        <main>
+            <div class="container">
+                <div class="form-group">
+                    <div style="display:flex; justify-content:space-between; align-items: center; background: #bbb; padding: 10px 15px; border-radius: 5px 5px 0px 0px;">
+                        <h3>Giriş Yap</h3>
+                        <h:link outcome="index.xhtml"><i class="fa-solid fa-xmark"></i> Kapat</h:link>
+                    </div>
+                    <h:form class="form">
+                        <strong> <h:outputText value="#{authenticationBean.message}"/> </strong>
+                        <div>
+                            <h:inputText value="#{authenticationBean.email}" class="input-email" id="email" a:placeholder="E-posta Adresi *" >
+                            <f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" />
+                            </h:inputText>
+                        </div>
+                        <div>
+                            <h:inputSecret value="#{authenticationBean.password}" class="input-pass" id="password" a:placeholder="Şifre *" />
+                        </div>
+                        <div>
+                            <h:link outcome="forgotpass.xhtml" style="font-size: .85rem; margin-left: 5px;">Şifremi Unuttum</h:link>
+                        </div>
+                        <div style="text-align: center;">
+                            <h:commandButton action="#{authenticationBean.login()}" value="Giriş Yap" class="btn" id="login" />
+                            <button class="btn"><h:link outcome="register.xhtml">Ücretsiz Üye Ol</h:link></button>
+                        </div>
+                    </h:form>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <div>
+                <div>
+                    <ul>
+                        <li><p>Cyberians</p></li>
+                        <li><a href="#">Hakkımızda</a></li>
+                        <li><a href="#">Ödüllerimiz</a></li>
+                        <li><a href="#">Kurumsal</a></li>
+                        <li><a href="#">Reklam</a></li>
+                        <li><a href="#">İnsan Kaynakları</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <ul>
+                        <li><p>Hizmetlerimiz</p></li>
+                        <li><a href="#">Emlak Haberleri</a></li>
+                        <li><a href="#">Kurumsal Üyelik</a></li>
+                        <li><a href="#">Projeler</a></li>
+                        <li><a href="#">Ücretsiz ilan Ver</a></li>
+                        <li><a href="#">Konut Kredisi Hesaplama</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <ul>
+                        <li><p>Diğer</p></li>
+                        <li><a href="#">İlan Yayınlama Kuralları</a></li>
+                        <li><a href="#">Kullanım Koşulları</a></li>
+                        <li><a href="#">Üyelik Sözleşmesi ve Gizlilik Politikası</a></li>
+                        <li><a href="#">İşlem Rehberi</a></li>
+                        <li><a href="#">Çerez Politikası</a></li>
+                        <li><a href="#">Kişisel Verilerin Korunması Hakkında</a></li>
+                        <li><a href="#">Açık Rıza Metni</a></li>
+                        <li><a href="#">Banka Aydınlatma Metni</a></li>
+                        <li><a href="#">Çalışan Adayı Aydınlatma Metni</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <ul>
+                        <li><p>İletişim</p></li>
+                        <li><a class="footer-btn" href="#">+90 (850) 882-0000</a></li>
+                        <li><a class="footer-btn" href="#">Mesaj Gönder</a></li>
+                        <li><a class="footer-btn" href="#">İletişim Bilgileri</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div style="background: #242424; width: 100%; text-align: center; padding: 10px 0;">
+                <p>Oğuzhan Kuşlar &copy; 2022</p>
+            </div>
+        </footer>
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <script src="resources/script.js"></script>
+    </h:body>
+</html>

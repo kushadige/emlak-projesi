@@ -1,0 +1,337 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="resources/css/style.css"/>
+        <link rel="stylesheet" href="resources/css/animation.css"/>
+        <title>CyberEmlak</title>
+        <style>
+            #ilanlar {
+                width: 75%;
+                min-height: 100vh;
+                padding-left: 40px;
+                padding: 20px;
+                padding-bottom: 100px;
+            }
+            #ilanlar .column {
+                display: flex;
+                margin-bottom: 10px;
+            }
+            #ilanlar .column img {
+                width: 100%;
+                height: 100%;
+            }
+            #ilanlar .column div:nth-child(1) {
+                position: relative;
+                width: 40%;
+                height: 170px;
+                padding: 10px;
+            }
+            #ilanlar .column div:nth-child(2) {
+                padding: 20px;
+                height: 170px;
+                width: 60%;
+            }
+            .navbar ul li ul > div > div:nth-child(3){
+                padding: 0;
+            }
+            .navbar ul li ul > div > div:hover {
+                background-color: #ddd;
+            }
+            .navbar ul li ul > div::before {
+                border-color: transparent transparent #f4f4f4 transparent;
+            }
+            #ilanlar tr {
+                display: inline-block;
+                width: 45%;
+                background: #fff;
+                margin: 20px;
+            }
+            .toggler {
+                opacity: 0;
+                z-index: 2;
+                position: absolute;
+                bottom: 15px;
+                right: 15px;
+                width: 30px;
+                height: 30px;
+                cursor: pointer;
+            }
+            .heart {
+                position: absolute;
+                bottom: 15px;
+                right: 15px;
+                width: 30px;
+                height: 30px;
+                padding: 1rem;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: #fff;
+                background: #A5BECC;
+            }
+            .heart i {
+                padding: 3px;
+                font-size: 1.3rem;
+            }
+            .red-text {
+                color: #ff0000;
+                background: #fff;
+            }
+            #danismanlar {
+                width: 25%;
+                text-align: left;
+                padding: 20px;
+            }
+            #danismanlar tr div {
+                margin-top: 20px;
+            }
+            #danismanlar div:nth-child(1) {
+                padding-right: 10px;
+                height: 90px;
+            }
+            .content {
+                display: flex;
+            }
+            footer {
+                width: 100%;
+                height: 400px;
+                background: #223445;
+                color: #fff;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                line-height: 1.6;
+            }
+            footer > div:nth-child(1) {
+                display: flex; 
+                justify-content: center;
+                padding: 30px 50px 60px;
+                width: 100%;
+            }
+            footer > div:nth-child(1) > div {
+                padding: 0 50px;
+            }
+            footer > div:nth-child(1) > div p {
+                font-weight: bolder;
+                font-size: 1.2rem;
+                margin-bottom: 10px;
+            }
+
+            footer > div:nth-child(1) > div .footer-btn {
+                display: block;
+                padding: 7px 60px;
+                background: #64707c;
+                margin: 30px 0;
+                border-radius: 5px;
+                font-size: .8rem;
+                font-weight: bolder;
+                color: #f8f8f8;
+            }
+            footer > div:nth-child(1) > div .footer-btn:focus {
+                outline: none;
+            }
+        </style>
+    </h:head>
+    <h:body>
+        <header>
+            <nav class="navbar">
+                <ul class="left">
+                    <li class="logo" style="align-self: center; margin-bottom: 3px; margin-right: 10px;"><h:outputLink value="index.xhtml" class="bolder" style="border-bottom: none; font-size: 1.4rem;"><i class="fa-solid fa-house-chimney-window" style="color: #cc0000;"></i> CyberEmlak</h:outputLink></li>
+                    <li><h:link outcome="about.xhtml">Hakkımızda</h:link></li>
+                    <li><h:link outcome="offices.xhtml">Ofislerimiz</h:link></li>
+                    <li><h:link outcome="consultants.xhtml">Danışmanlarımız</h:link></li>
+                    <li><h:link outcome="news.xhtml">Haberler</h:link></li>
+                    <li><h:link outcome="contact.xhtml">İletişim</h:link></li>
+                </ul>
+                <ul class="right">
+                    <li class="login-group">
+                        <div style="width: 130px;">
+                            <div><p class="bolder" style="color: #ff0000; font-size:.85rem; margin-bottom: -1px;">Hoşgeldiniz</p><h:outputText value="#{authenticationBean.user.name}" class="pale-text" style="font-size: .80rem" /></div>
+                            <div><i style="display: block;" class="fa-solid fa-circle-user fa-2x"></i></div>
+                        </div>
+                        <ul>
+                            <div style="background-color: #f4f4f4;">
+                                <div>
+                                    <li style="background-color: #131313"><h:outputLink value="favoriler.xhtml" class="bolder" style="color: #fff;">Favorilerim</h:outputLink></li>
+                                </div>
+                                <div>
+                                    <li><h:outputLink value="ilanlarim.xhtml" class="bolder" style="color: #000;">İlanlarım</h:outputLink></li>
+                                </div>
+                                <div>
+                                    <li><h:outputLink value="logout.xhtml" class="bolder" style="color: #000;">Çıkış Yap</h:outputLink></li>
+                                </div>
+                            </div>
+                        </ul>
+                    </li>
+                    <li class="advertise bolder"><h:outputLink value="ilanver.xhtml">Ücretsiz İlan Ver</h:outputLink></li>
+                </ul>
+            </nav>
+
+            <div style="display: flex; align-items: center; margin: 100px 0 30px 0; background-color: rgba(0, 0, 0, 0.5); padding: 20px 100px; border-radius: 5px;">
+                <h1 class="cyberians" style="font-size: 3rem;">cyberians</h1>
+                <p style="margin-top: 15px; color:#f8f4f8;">Hayalinizdeki eve kavuşun</p>
+            </div>
+
+
+            <div style="margin-top: 20px; cursor: pointer;">
+                <a class="move-btn" href="#ilanlar"><i style="color:#f8f4f8;" class="fa-solid fa-angles-down fa-3x"></i></a>
+            </div>
+        </header>
+        
+        <main>
+            <div class="content">
+                <section id="ilanlar">
+                    
+                    <div id="baslik">
+                        <div style="display:flex; justify-content: space-between; padding: 2rem">
+                            <h1>Öne Çıkan İlanlar</h1>
+                            <div class="search" style="display: flex; justify-content: space-between; background-color: rgba(0, 0, 0, 0); width: 600px; border-radius: 5px">
+                                <select style="padding: 10px 80px; border-radius: 5px; border: none; font-family: inherit;" name="" id="">
+                                    <option value="">İstanbul</option>
+                                    <option value="">Ankara</option>
+                                    <option value="">İzmir</option>
+                                </select>
+                                <select style="padding: 10px 80px; border-radius: 5px; border: none; font-family: inherit;" name="" id="">
+                                    <option value="">Kiralık</option>
+                                    <option value="">Satılık</option>
+                                </select>
+                                <input style="padding: 10px; border-radius: 5px; border: none; background-color: #fff; font-family: inherit;" type="submit" value="Ara" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <h:dataTable value="#{mainBean.ilanList}" var="s">
+                        <h:column class="row">
+                            <div class="column">
+                                <div>
+                                    <img src="#{s.gorsel}" alt="" />
+                                    <h:form>
+                                        <h:selectBooleanCheckbox class="toggler">
+                                            <f:ajax listener="#{authenticationBean.favorilereEkle(s.ilan_id)}"/>
+                                        </h:selectBooleanCheckbox>
+                                        <div class="heart"><i class="fa-solid fa-heart"></i></div>
+                                    </h:form>
+                                </div>
+                                <div>
+                                    <h5 class='search'>#{s.kategori}</h5>
+                                    <h3>#{s.fiyat}</h3>
+                                    <a href="ilan.xhtml">#{s.aciklama}</a>
+                                    <p style="font-size: .8rem;">İlan Sahibi: #{s.ilanSahibi.name}</p>
+                                    <p style="font-size: .8rem;">Konum : #{s.konum}</p>
+                                    <p style="font-size: .8rem;">Telefon : #{s.ilanSahibi.phone}</p>
+                                    <p id="ilanid" style="display: none;">#{s.ilan_id}</p>
+                                </div>
+                            </div>
+                        </h:column>
+                    </h:dataTable>
+                    <!-- HIDDEN FAV DATA -->
+                    <h:dataTable value="#{authenticationBean.favoriIlanlarim}" var="s" style="display: none;">
+                        <h:column>
+                            <p id="favdata">#{s.ilan_id}</p>
+                        </h:column>
+                    </h:dataTable>
+
+                </section>
+                <section id="danismanlar">
+                    
+                    <div style="display: flex; padding: 2rem;">
+                        <h1>Danışmanlarımız</h1>
+                    </div>
+                    <h:dataTable value="#{mainBean.danismanList}" var="s">
+                        <h:column>
+                            <div style="display: flex;">
+                                <div>
+                                    <img style="width: 70px; height: 80px; object-fit: cover;" src="#{s.fotograf}" />
+                                </div>
+                                <div>
+                                    <h3>#{s.adi}</h3>
+                                    <small style="font-style: italic; color: #aaa;">#{s.gorev}</small>
+                                    <p style="margin-top: 5px; color: #101010;"><i class="fa-solid fa-phone"></i> #{s.telefon}</p>
+                                </div>
+                            </div>
+                        </h:column>
+                    </h:dataTable>
+                </section>
+            
+            </div>
+        </main>
+        <footer>
+            <div>
+                <div>
+                    <ul>
+                        <li><p>Cyberians</p></li>
+                        <li><a href="#">Hakkımızda</a></li>
+                        <li><a href="#">Ödüllerimiz</a></li>
+                        <li><a href="#">Kurumsal</a></li>
+                        <li><a href="#">Reklam</a></li>
+                        <li><a href="#">İnsan Kaynakları</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <ul>
+                        <li><p>Hizmetlerimiz</p></li>
+                        <li><a href="#">Emlak Haberleri</a></li>
+                        <li><a href="#">Kurumsal Üyelik</a></li>
+                        <li><a href="#">Projeler</a></li>
+                        <li><a href="#">Ücretsiz ilan Ver</a></li>
+                        <li><a href="#">Konut Kredisi Hesaplama</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <ul>
+                        <li><p>Diğer</p></li>
+                        <li><a href="#">İlan Yayınlama Kuralları</a></li>
+                        <li><a href="#">Kullanım Koşulları</a></li>
+                        <li><a href="#">Üyelik Sözleşmesi ve Gizlilik Politikası</a></li>
+                        <li><a href="#">İşlem Rehberi</a></li>
+                        <li><a href="#">Çerez Politikası</a></li>
+                        <li><a href="#">Kişisel Verilerin Korunması Hakkında</a></li>
+                        <li><a href="#">Açık Rıza Metni</a></li>
+                        <li><a href="#">Banka Aydınlatma Metni</a></li>
+                        <li><a href="#">Çalışan Adayı Aydınlatma Metni</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <ul>
+                        <li><p>İletişim</p></li>
+                        <li><a class="footer-btn" href="#">+90 (850) 882-0000</a></li>
+                        <li><a class="footer-btn" href="#">Mesaj Gönder</a></li>
+                        <li><a class="footer-btn" href="#">İletişim Bilgileri</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div style="background: #242424; width: 100%; text-align: center; padding: 10px 0;">
+                <p>Oğuzhan Kuşlar &copy; 2022</p>
+            </div>
+        </footer>
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <script src="resources/script.js"></script>
+        <script src="resources/load.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function(){
+                const favdata = document.querySelectorAll('#favdata');
+                const ilanids = document.querySelectorAll('#ilanid');
+                const favbtns = document.querySelectorAll('.heart');
+                favdata.forEach((el) => {
+                    ilanids.forEach((ilanid) => {
+                        if(el.textContent === ilanid.textContent){
+                            favbtns[ilanid.textContent-1].classList.add('red-text');
+                        }
+                    });
+                });
+
+            });
+        </script>
+    </h:body>
+</html>

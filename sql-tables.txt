@@ -1,0 +1,70 @@
+############### CREATE DATABASE ####################
+DROP DATABASE IF EXISTS dbep;
+CREATE DATABASE dbep;
+USE dbcyberians;
+
+############### CREATE TABLE ####################
+CREATE TABLE user(
+	name VARCHAR(255),
+	email VARCHAR(255),
+	phone VARCHAR(255),
+	password VARCHAR(255)
+);
+
+CREATE TABLE ilanlar(
+	ilan_id INTEGER PRIMARY KEY,
+	kategori VARCHAR(30),
+	fiyat VARCHAR(255),
+	baslik VARCHAR(255),
+	aciklama VARCHAR(255),
+	gorsel VARCHAR(255),
+	konum VARCHAR(30),
+	ilansahibi_email VARCHAR(255)
+);
+
+CREATE TABLE favorites(
+	ilan_id INTEGER,
+	email VARCHAR(255)
+);
+
+CREATE TABLE danismanlar(
+	adi VARCHAR(255),
+	telefon VARCHAR(255),
+	gorev VARCHAR(255),
+	fotograf VARCHAR(255)
+);
+
+CREATE TABLE haberler(
+	tarih VARCHAR(50),
+	yazar VARCHAR(60),
+	baslik VARCHAR(50),
+	aciklama VARCHAR(255)
+);
+
+############### INSERT TABLE ####################
+INSERT INTO user VALUES("Hasan Karag├Âz", "hk@gmail.com", "+90 (555) 333-4455", "123456");
+INSERT INTO user VALUES("O─şuzhan Ku┼şlar", "ok@gmail.com", "+90 (532) 311-7786", "asdasd");
+INSERT INTO user VALUES("Nilay S├╝r├╝c├╝", "ns@gmail.com", "+90 (544) 422-2222", "nilay1234");
+INSERT INTO user VALUES("At─▒f S├Ânmez", "as@gmail.com", "+90 (552) 241-6666", "atif1234");
+
+
+INSERT INTO ilanlar VALUES(1, "Sat─▒l─▒k - Daire", "7.500.000 TL", "Be┼şikta┼ş Balmumcu Sat─▒l─▒k Daire", "Be┼şikta┼ş Balmumcu Sat─▒l─▒k Daire 2+1 200 m2", "https://cdnc.re-os.com/property/8de3b0d0-851d-4410-a5ff-d0f6f2903d42.jpg?width=760&mode=crop", "─░stanbul, Be┼şikta┼ş", "ok@gmail.com");
+INSERT INTO ilanlar VALUES(2, "Sat─▒l─▒k - Daire", "3.000.000 TL", "Sar─▒yer Zekeriyak├Ây Sat─▒l─▒k Daire", "Sar─▒yer Zekeriyak├Ây Sat─▒l─▒k Daire 4+1 300 m2", "https://cdnc.re-os.com/property/12a1f691-7aae-476f-99be-5b03f9db15d4.jpg?width=760&mode=crop", "─░stanbul, Sar─▒yer", "ok@gmail.com");
+INSERT INTO ilanlar VALUES(3, "Sat─▒l─▒k - Daire", "7.500.000 TL", "Be┼şikta┼ş Arnavutk├Ây Sat─▒l─▒k Daire", "Be┼şikta┼ş Arnavutk├Ây Sat─▒l─▒k Daire 2+1 200 m2", "https://cdnc.re-os.com/property/06ef2ef3-5961-4ca6-a61e-f3fd306519b7.jpg?width=760&mode=crop", "─░stanbul, Be┼şikta┼ş", "hk@gmail.com");
+INSERT INTO ilanlar VALUES(4, "Sat─▒l─▒k - Daire", "675.000 TL", "Be┼şikta┼ş Nispetiye Sat─▒l─▒k Daire", "Be┼şikta┼ş Nispetiye Sat─▒l─▒k Daire 2+1 120 m2", "https://cdnc.re-os.com/property/dcea7b4e-e124-4a7c-aae1-719b98dc6574.jpg?width=760&mode=crop", "─░stanbul, Be┼şikta┼ş", "ok@gmail.com");
+INSERT INTO ilanlar VALUES(5, "Sat─▒l─▒k - Daire", "1.200.000 TL", "Tuzla Postane Sat─▒l─▒k Daire", "Tuzla Postane Sat─▒l─▒k Daire 3+1 140 m2", "https://cdnc.re-os.com/property/6669516a-7c49-4014-88a5-daf504564cb1.jpg?width=760&mode=crop", "─░stanbul, Tuzla", "ns@gmail.com");
+INSERT INTO ilanlar VALUES(6, "Sat─▒l─▒k - Daire", "975.000 TL", "Bak─▒rk├Ây Zuhuratbaba Sat─▒l─▒k Daire", "Bak─▒rk├Ây Zuhuratbaba Sat─▒l─▒k Daire 3+1 130 m2", "https://cdnc.re-os.com/property/f322f85a-eeec-48cc-b297-cd6ea0578878.jpg?width=760&mode=crop", "─░stanbul, Bak─▒rk├Ây", "ns@gmail.com");
+INSERT INTO ilanlar VALUES(7, "Sat─▒l─▒k - Daire", "1.750.000 TL", "Ata┼şehir Atat├╝rk Sat─▒l─▒k Daire", "Ata┼şehir Atat├╝rk Sat─▒l─▒k Daire 3+1 120 m2", "https://cdnc.re-os.com/property/ff4340f6-466d-4c6b-8e2d-fa1dbf7e0827.jpg?width=760&mode=crop", "─░stanbul, Ata┼şehir", "ns@gmail.com");
+INSERT INTO ilanlar VALUES(8, "Sat─▒l─▒k - Daire", "2.000.000 TL", "Beykoz Acarlar Sat─▒l─▒k Daire", "Beykoz Acarlar Sat─▒l─▒k Daire 4+1 165 m2", "https://cdnc.re-os.com/property/f5a27c2c-5efe-4020-8150-b37447003f8c.jpg?width=760", "─░stanbul, Beykoz", "as@gmail.com");
+INSERT INTO ilanlar VALUES(9, "Sat─▒l─▒k - Villa", "2.975.000 TL", "Bak─▒rk├Ây Ye┼şilk├Ây Sat─▒l─▒k Daire", "Bak─▒rk├Ây Ye┼şilk├Ây Sat─▒l─▒k Daire 3+1 130 m2", "https://cdnc.re-os.com/property/72418bd3-646d-44c9-8e11-f44d34c0744c.jpg?width=760&mode=crop", "─░stanbul, Bak─▒rk├Ây", "as@gmail.com");
+INSERT INTO ilanlar VALUES(10, "Kiral─▒k - Villa", "80.000 TL", "Sar─▒yer Zekeriyak├Ây Kiral─▒k Villa", "Rumeli Konaklar─▒ Tam M├╝stakil Deniz Manzaral─▒ Villa 5+1 400 m2", "https://hecdnw01.hemlak.com/ds01/2/3/9/2/3/9/8/3/338b6b63-46ae-4ae8-b6e3-9a8c6340b95c.jpg", "─░stanbul, Sar─▒yer", "ok@gmail.com");
+INSERT INTO ilanlar VALUES(11, "Kiral─▒k - Daire", "16.000 TL", "Be┼şikta┼ş Akat Sat─▒l─▒k Daire", "Etiler ├çevre Sitesinde Kiral─▒k Daire 3+1 120 m2", "https://hecdnw01.hemlak.com/ds01/2/3/4/9/3/8/8/3/c4ebb13c-c82a-4e35-accc-37b153ab4b56.jpg", "─░stanbul, Be┼şikta┼ş", "ok@gmail.com");
+INSERT INTO ilanlar VALUES(12, "Kiral─▒k - Villa", "90.000 TL", "Sar─▒yer Zekeriyak├Ây Sat─▒l─▒k Daire", "Zekeriyak├Ây Merkez Havuzlu Asans├Ârl├╝ Kiral─▒k Villa 7+2 700 m2", "https://hecdnw01.hemlak.com/ds01/1/4/6/5/0/3/6/3/40192e94-350e-47d4-a5a0-8c2b3f860d22.jpg", "─░stanbul, Sar─▒yer", "ns@gmail.com");
+INSERT INTO ilanlar VALUES(13, "Kiral─▒k - Villa", "60.000 TL", "Sar─▒yer Kumk├Ây Kiral─▒k Villa", "Sar─▒yer Kumk├Ây Kiral─▒k Villa 7+1 388 m2", "https://hecdnw01.hemlak.com/ds01/3/4/9/9/0/8/8/3/1652041909-47442-38809943.jpeg", "─░stanbul, Sar─▒yer", "hk@gmail.com");
+
+
+INSERT INTO danismanlar VALUES("Esra Uslu", "+90 (549) 565-0565", "Broker", "https://cdnc.re-os.com/user/9af166df-5889-4152-bd07-d0b7f933e150.jpg?w=254&h=340");
+INSERT INTO danismanlar VALUES("At─▒f S├Ânmez", "+90 (111) 222-3344", "Consultant", "https://cdnc.re-os.com/user/f203d37e-0d72-4154-af9c-bace79090a64.jpg?w=254&h=340");
+INSERT INTO danismanlar VALUES("Selim Sars─▒lmaz", "+90 (222) 333-4455", "Consultant", "https://cdnc.re-os.com/user/cf69e1e2-1e4e-448e-b463-36659a97b3e3.jpg?w=254&h=340");
+INSERT INTO danismanlar VALUES("Nilay S├╝r├╝c├╝", "+90 (666) 555-4443322", "Consultant", "https://cdnc.re-os.com/user/810d38a5-0c89-4f50-b878-6d3d2f4f680e.jpg?w=254&h=340");
+INSERT INTO danismanlar VALUES("Murat Beyaz─▒t", "+90 (333) 444-5566", "Consultant", "https://cdnc.re-os.com/user/1781c55d-3717-4ed5-a4cd-2ea510a68fe5.jpg?w=254&h=340");

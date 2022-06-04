@@ -1,0 +1,64 @@
+header > div:nth-child(2) {
+    transform: translateY(-200px);
+    opacity: 0.2;
+    animation: animate1 1.5s ease-in-out forwards;
+}
+
+header > div:nth-child(3) {
+    opacity: 0;
+    animation: animate3 3s ease-in-out infinite .5s;
+}
+
+header {
+    animation: animate4 15s ease infinite;
+}
+
+.cyberians {
+    color: #fff;
+    animation: animate2 10s linear forwards 4s;
+    animation-iteration-count: 1;
+}
+
+@keyframes animate1 {
+    to {
+        transform: translateY(0);
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes animate2 {
+    25% {
+        color: rgb(206, 107, 107);
+    }
+    50% {
+        color: rgb(103, 198, 103);
+    }
+    75% {
+        color: rgb(99, 99, 196);
+    }
+    100% {
+        color: #fff;
+    }
+}
+
+@keyframes animate3 {
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes animate4 {
+    0% {
+        background-position: 0 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0 50%;
+    }
+}

@@ -1,0 +1,255 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="resources/css/style.css"/>
+        <link rel="stylesheet" href="resources/css/animation.css"/>
+        <title>CyberEmlak - Haberler</title>
+        <style>
+            main {
+                padding: 70px 50px;
+            }
+
+            #ilanlar {
+                max-width: 1100px;
+                margin: auto;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                background: inherit;
+            }
+            #ilanlar > div{
+                display: flex;
+                width: 100%;
+                justify-content: space-around;
+                padding: 50px 30px 20px;
+            }
+            
+            .row {
+                width: 60%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border: 1px solid #ddd;
+            }
+            .column-1 {
+                width: 100%; 
+            }
+            .column-1 img {
+                background: #f8f4f8;
+                height: 270px;
+                width: 270px;
+                object-fit: cover;
+            }
+            .column-2 {
+                padding: 20px;
+                width: 100%;
+                height: 270px;
+                background: #f8f8f8;
+                position: relative;
+            }
+            .gear {
+                position: absolute;
+                top: 15px;
+                right: 30px;
+                font-size: 1.3rem;
+            }
+            .gear:hover {
+                opacity: 0.7;
+                cursor: pointer;
+            }
+            .clicked {
+                margin-top: 20px;
+            }
+            footer {
+                width: 100%;
+                height: 400px;
+                background: #223445;
+                color: #fff;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                line-height: 1.6;
+            }
+            footer > div:nth-child(1) {
+                display: flex; 
+                justify-content: center;
+                padding: 30px 50px 60px;
+                width: 100%;
+            }
+            footer > div:nth-child(1) > div {
+                padding: 0 50px;
+            }
+            footer > div:nth-child(1) > div p {
+                font-weight: bolder;
+                font-size: 1.2rem;
+                margin-bottom: 10px;
+            }
+
+            footer > div:nth-child(1) > div .footer-btn {
+                display: block;
+                padding: 7px 60px;
+                background: #64707c;
+                margin: 30px 0;
+                border-radius: 5px;
+                font-size: .8rem;
+                font-weight: bolder;
+                color: #f8f8f8;
+            }
+            footer > div:nth-child(1) > div .footer-btn:focus {
+                outline: none;
+            }
+        </style>
+    </h:head>
+    <h:body>
+        
+        <nav class="navbar">
+            <ul class="left">
+                <li class="logo" style="align-self: center; margin-bottom: 3px; margin-right: 10px;"><h:outputLink value="home.xhtml" class="bolder" style="border-bottom: none; font-size: 1.4rem;"><i class="fa-solid fa-house-chimney-window" style="color: #cc0000;"></i> CyberEmlak</h:outputLink></li>
+            </ul>
+            <ul class="right">
+                <li style="padding: 10px 10px;" class="advertise bolder"><h:outputLink value="logout.xhtml">Çıkış Yap</h:outputLink></li>
+            </ul>
+        </nav>
+        
+        <main>
+            <section id='ilanlar'>
+                <div>
+                    <h1>İlanlarım</h1>
+                    <input type="text" class="filter" placeholder="Ara"/>
+                </div>
+                <h:dataTable class='row' value="#{authenticationBean.ilanlarim}" var="s">
+                    <h:column>
+                        <div class='column-1'>
+                            <img src='#{s.gorsel}' />
+                        </div>
+                    </h:column>
+                    <h:column>
+                        <div class="column-2">
+                            <div class="gear"><i class="fa-solid fa-gear"></i></div>
+                            <div>
+                                <h:form>
+                                    <h5 class='search'>#{s.kategori}</h5>
+                                    <h3>#{s.fiyat}</h3>
+                                    <p>#{s.aciklama}</p>
+                                </h:form>
+                                <!-- HIDDEN FORM -->
+                                <h:form style="display: none;">
+                                    <div>
+                                        <h:inputText a:placeholder="#{s.kategori}" value="#{authenticationBean.ilan.kategori}"/>
+                                        <h:inputText a:placeholder="#{s.fiyat}" value="#{authenticationBean.ilan.fiyat}"/>
+                                        <h:inputText a:placeholder="#{s.baslik}" value="#{authenticationBean.ilan.baslik}"/>
+                                        <h:inputText a:placeholder="#{s.aciklama}" value="#{authenticationBean.ilan.aciklama}"/>
+                                        <h:inputText a:placeholder="#{s.gorsel}" value="#{authenticationBean.ilan.gorsel}"/>
+                                        <h:inputText a:placeholder="#{s.konum}" value="#{authenticationBean.ilan.konum}"/>
+                                    </div>
+                                    <div>
+                                        <h:commandButton style="display: block;" action="#{authenticationBean.ilanguncelle(s.ilan_id)}" value="Güncelle" />
+                                    </div>
+                                </h:form>
+                            </div>
+                            <div><h:form><h:commandButton style="border: 1px solid #ccc; font-family: inherit; padding: 5px 10px; text-align: center; position: absolute; right: 20px; bottom: 30px; cursor: pointer;" action="#{authenticationBean.ilanSil(s.ilan_id)}" value='sil'/></h:form></div>
+                        </div>
+                    </h:column>
+                </h:dataTable>
+            </section>
+        </main>
+        
+        
+        <footer>
+            <div>
+                <div>
+                    <ul>
+                        <li><p>Cyberians</p></li>
+                        <li><a href="#">Hakkımızda</a></li>
+                        <li><a href="#">Ödüllerimiz</a></li>
+                        <li><a href="#">Kurumsal</a></li>
+                        <li><a href="#">Reklam</a></li>
+                        <li><a href="#">İnsan Kaynakları</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <ul>
+                        <li><p>Hizmetlerimiz</p></li>
+                        <li><a href="#">Emlak Haberleri</a></li>
+                        <li><a href="#">Kurumsal Üyelik</a></li>
+                        <li><a href="#">Projeler</a></li>
+                        <li><a href="#">Ücretsiz ilan Ver</a></li>
+                        <li><a href="#">Konut Kredisi Hesaplama</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <ul>
+                        <li><p>Diğer</p></li>
+                        <li><a href="#">İlan Yayınlama Kuralları</a></li>
+                        <li><a href="#">Kullanım Koşulları</a></li>
+                        <li><a href="#">Üyelik Sözleşmesi ve Gizlilik Politikası</a></li>
+                        <li><a href="#">İşlem Rehberi</a></li>
+                        <li><a href="#">Çerez Politikası</a></li>
+                        <li><a href="#">Kişisel Verilerin Korunması Hakkında</a></li>
+                        <li><a href="#">Açık Rıza Metni</a></li>
+                        <li><a href="#">Banka Aydınlatma Metni</a></li>
+                        <li><a href="#">Çalışan Adayı Aydınlatma Metni</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <ul>
+                        <li><p>İletişim</p></li>
+                        <li><a class="footer-btn" href="#">+90 (850) 882-0000</a></li>
+                        <li><a class="footer-btn" href="#">Mesaj Gönder</a></li>
+                        <li><a class="footer-btn" href="#">İletişim Bilgileri</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div style="background: #242424; width: 100%; text-align: center; padding: 10px 0;">
+                <p>Oğuzhan Kuşlar &copy; 2022</p>
+            </div>
+        </footer>
+        
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <script src="resources/script.js"></script>
+        <script src="resources/load.js"></script>
+        <script>
+            document.querySelector('.filter').addEventListener('keyup', (e) => {
+                const value = e.target.value.toLowerCase();
+                document.querySelectorAll('.search').forEach((el) => {
+                    if(el.innerText.toLowerCase().indexOf(value) !== -1){
+                        el.parentElement.parentElement.parentElement.parentElement.parentElement.style.display = 'table-row';
+                    } else {
+                        el.parentElement.parentElement.parentElement.parentElement.parentElement.style.display = 'none';
+                    }
+                });
+            });
+            
+            document.querySelectorAll('.gear').forEach((gear, index) => {
+                
+                gear.addEventListener('click', (e) => {
+                    
+                    const el = e.target.parentElement.nextElementSibling;
+
+                    if(el.classList.contains('clicked')){
+                        el.classList.remove('clicked');
+                        e.target.parentElement.innerHTML = `<i class='fa-solid fa-gear'></i>`;
+                        el.children[1].style.display = 'none';
+                        el.children[0].style.display = 'block';
+
+                    } else {
+                        el.classList.add('clicked');
+                        e.target.parentElement.innerHTML = `<i class="fa-solid fa-xmark"></i>`;
+                        el.children[0].style.display = 'none';
+                        el.children[1].style.display = 'block';
+                    }
+                });
+            });
+        </script>
+    </h:body>
+</html>                     

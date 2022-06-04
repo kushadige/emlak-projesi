@@ -1,0 +1,204 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="resources/css/style.css"/>
+        <link rel="stylesheet" href="resources/css/animation.css"/>
+        <title>CyberEmlak - İlan Ver</title>
+        <style>
+            .form-group {
+                width: 100%;
+                height: 100vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .form-group .form {
+                padding: 70px 40px;
+                box-shadow: 3px 3px 10px 1px rgba(0, 0, 0, 0.3);
+                background: #fff;
+                border-radius: 5px;
+            }
+            .form-group .input-field {
+                display: flex;
+                justify-content: space-between;
+            }
+
+            .agreement {
+                width: 100%;
+                margin: 10px 5px 20px;
+            }
+            .agreement #confirm {
+                width: 20px;
+                height: 20px;
+            }
+            .agreement p {
+                display: inline-block;
+            }
+            .agreement p:after {
+                content: '*';
+            }
+            .form-group .btn {
+                display: block;
+                width: 100%;
+                padding: 10px;
+                margin-top: 10px;
+                border: none;
+                background: inherit;
+                font-family: inherit;
+                font-size: 1.1rem;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+            .form-group .btn:nth-child(1){
+                background: #cb0000;
+                color: #fff;
+            }
+            .form-group input {
+                display: inline-block;
+                padding: 10px 20px;
+                margin: 6px 3px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                font-family: inherit;
+                font-size: .9rem;
+            }
+            footer {
+                width: 100%;
+                height: 400px;
+                background: #223445;
+                color: #fff;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                line-height: 1.6;
+            }
+            footer > div:nth-child(1) {
+                display: flex; 
+                justify-content: center;
+                padding: 30px 50px 60px;
+                width: 100%;
+            }
+            footer > div:nth-child(1) > div {
+                padding: 0 50px;
+            }
+            footer > div:nth-child(1) > div p {
+                font-weight: bolder;
+                font-size: 1.2rem;
+                margin-bottom: 10px;
+            }
+
+            footer > div:nth-child(1) > div .footer-btn {
+                display: block;
+                padding: 7px 60px;
+                background: #64707c;
+                margin: 30px 0;
+                border-radius: 5px;
+                font-size: .8rem;
+                font-weight: bolder;
+                color: #f8f8f8;
+            }
+            footer > div:nth-child(1) > div .footer-btn:focus {
+                outline: none;
+            }
+        </style>
+    </h:head>
+    <h:body>
+        
+        <nav class="navbar">
+            <ul class="left">
+                <li class="logo" style="align-self: center; margin-bottom: 3px; margin-right: 10px;"><h:outputLink value="home.xhtml" class="bolder" style="border-bottom: none; font-size: 1.4rem;"><i class="fa-solid fa-house-chimney-window" style="color: #cc0000;"></i> CyberEmlak</h:outputLink></li>
+            </ul>
+            <ul class="right">
+                <li style="padding: 10px 10px;" class="advertise bolder"><h:outputLink value="logout.xhtml">Çıkış Yap</h:outputLink></li>
+            </ul>
+        </nav>
+
+        <main>
+            <div class="form-group">
+                <h:form class="form">
+                    <div>
+                        <h2>İlan Oluştur</h2>
+                        <strong> <h:outputText value="#{authenticationBean.message}"/> </strong>
+                        <div class="input-field">
+                            <h:inputText value="#{authenticationBean.ilan.kategori}" id="kategori" a:placeholder="Kategori"/>
+                            <h:inputText value="#{authenticationBean.ilan.fiyat}" id="fiyat" a:placeholder="Fiyat"/>
+                        </div>
+                        <div class="input-field">
+                            <h:inputText value="#{authenticationBean.ilan.baslik}" id="baslik" a:placeholder="Başlık"/>
+                            <h:inputText value="#{authenticationBean.ilan.aciklama}" id="aciklama" a:placeholder="Açıklama"/>
+                        </div>
+                        <div class="input-field">
+                            <h:inputText value="#{authenticationBean.ilan.gorsel}" id="gorsel" a:placeholder="Görsel"/>
+                            <h:inputText value="#{authenticationBean.ilan.konum}" id="konum" a:placeholder="Konum"/>
+                        </div>
+                    </div>
+                    <div>
+                        <h:commandButton action="#{authenticationBean.ilanolustur()}" value="İlan Oluştur" class="btn" id="ilanolustur" />
+                    </div>
+                </h:form>
+            </div>
+        </main>
+        
+        <footer>
+            <div>
+                <div>
+                    <ul>
+                        <li><p>Cyberians</p></li>
+                        <li><a href="#">Hakkımızda</a></li>
+                        <li><a href="#">Ödüllerimiz</a></li>
+                        <li><a href="#">Kurumsal</a></li>
+                        <li><a href="#">Reklam</a></li>
+                        <li><a href="#">İnsan Kaynakları</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <ul>
+                        <li><p>Hizmetlerimiz</p></li>
+                        <li><a href="#">Emlak Haberleri</a></li>
+                        <li><a href="#">Kurumsal Üyelik</a></li>
+                        <li><a href="#">Projeler</a></li>
+                        <li><a href="#">Ücretsiz ilan Ver</a></li>
+                        <li><a href="#">Konut Kredisi Hesaplama</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <ul>
+                        <li><p>Diğer</p></li>
+                        <li><a href="#">İlan Yayınlama Kuralları</a></li>
+                        <li><a href="#">Kullanım Koşulları</a></li>
+                        <li><a href="#">Üyelik Sözleşmesi ve Gizlilik Politikası</a></li>
+                        <li><a href="#">İşlem Rehberi</a></li>
+                        <li><a href="#">Çerez Politikası</a></li>
+                        <li><a href="#">Kişisel Verilerin Korunması Hakkında</a></li>
+                        <li><a href="#">Açık Rıza Metni</a></li>
+                        <li><a href="#">Banka Aydınlatma Metni</a></li>
+                        <li><a href="#">Çalışan Adayı Aydınlatma Metni</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <ul>
+                        <li><p>İletişim</p></li>
+                        <li><a class="footer-btn" href="#">+90 (850) 882-0000</a></li>
+                        <li><a class="footer-btn" href="#">Mesaj Gönder</a></li>
+                        <li><a class="footer-btn" href="#">İletişim Bilgileri</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div style="background: #242424; width: 100%; text-align: center; padding: 10px 0;">
+                <p>Oğuzhan Kuşlar &copy; 2022</p>
+            </div>
+        </footer>
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <script src="resources/script.js"></script>
+        <script src="resources/load.js"></script>
+    </h:body>
+</html>

@@ -1,0 +1,188 @@
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    font-family: 'Muli' ,sans-serif;
+    line-height: 1.4;
+    background: #f4f4f4;
+}
+
+ul {
+    list-style: none;
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #f4f4f4;
+    box-shadow: 3px 3px 10px 1px rgba(0,0,0,0.3);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 40px;
+    padding-top: 10px;
+    user-select: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.navbar > ul {
+    display: flex;
+}
+
+.navbar ul li {
+    padding: 10px;
+    color: #000;
+    position: relative;
+}
+
+/* NAVBAR RIGHT */
+.navbar .right .login-group,
+.navbar .right .advertise {
+    margin: 0 10px;
+    padding: 5px 20px;
+    border-radius: 25px;
+}
+
+.navbar .right .login-group {
+    background-color: #202020;
+    color: #f4f4f4;
+}
+.navbar .right .login-group > div {
+    display: flex;
+    align-items: center;
+    width: 110px;
+    justify-content: space-between;
+}
+
+.navbar .right .advertise {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    background-color: #ff0000;
+    color: #fff;
+}
+.navbar .right .advertise a {
+    display: inline-block;
+    width: 100%;
+}
+.navbar .right .advertise:hover {
+    background-color: #cc0000;
+}
+
+/* Hide Nested ul by default */
+.navbar ul li ul {
+    display: block;
+    background-color: transparent;
+    position: absolute;
+    left: -30px;
+    right: -30px;
+    top: 0px;
+    margin-top: 40px;
+    padding-top: 30px;
+}
+.navbar ul li ul > div {
+    display: none;
+    position: relative;
+    background-color: #131313;
+    text-align: center;
+    border-radius: 5px;
+    padding: 10px;
+    padding-bottom: 20px;
+}
+.navbar ul li ul li {
+    border-radius: 4px;
+    color: #fff;
+}
+.navbar ul li ul > div > div {
+    padding: 10px;
+    border-radius: 5px;
+}
+.navbar ul li ul > div > div:nth-child(2){
+    padding: 0;
+}
+.navbar ul li ul > div > div:hover {
+    background-color: #222;
+}
+
+.navbar ul li:hover ul > div {
+    display: block;
+}
+/* LOGIN HOVER TRIANGLE */
+.navbar ul li ul > div::before {
+    content: '';
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-style: solid;
+    border-width: 16px;
+    border-color: transparent transparent #131313 transparent;
+}
+
+/* TEXT COLORS - FONT WEIGHT */
+.red-text {
+    color: #ed0000;
+}
+
+.pale-text {
+    color: #bbb;
+}
+
+.bolder {
+    font-weight: bold;
+}
+
+.bg-red {
+    background-color: #ff0000;
+}
+
+/* NAVBAR LEFT */
+.navbar .left li a {
+    font-size: .9rem;
+    padding: 10px 5px;
+}
+.navbar .left li a:hover {
+    opacity: 0.8;
+    border-bottom: 2px solid #000;
+}
+.navbar .logo {
+    padding: 0;
+    font-size: 1.4rem;
+}
+.navbar .logo i {
+    font-size: 1.8rem;
+}
+
+
+/* MAIN */
+
+header {
+    height: 100vh;
+    background: linear-gradient(-45deg, red, green, blue);
+    background-size: 400% 400%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+#info {
+    height: 100vh;
+    background: linear-gradient(to right, cornflowerblue, coral);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+}
