@@ -279,6 +279,14 @@ public class DBController {
             PreparedStatement ps = con.prepareStatement("DELETE FROM ilanlar WHERE ilan_id = ?");
             ps.setInt(1, ilan_id);
             ps.executeUpdate();
+            
+            ps = con.prepareStatement("UPDATE ilanlar SET ilan_id = ? WHERE ilan_id IN (SELECT MAX(ilan_id) FROM ilanlar)");
+            ps.setInt(1, ilan_id);
+            ps.executeUpdate();
+            
+            ps = con.prepareStatement("DELETE FROM favorites WHERE ilan_id = ?");
+            ps.setInt(1, ilan_id);
+            ps.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(DBController.class.getName()).log(Level.SEVERE, null, ex);
         }
